@@ -1,1 +1,31 @@
 Notes:
+
+A shell script is a plain text file containing commands. When executed, the shell runs these commands line-by-line just like typing them in the terminal.
+
+🧾 Shell Script: file_checker.sh
+
+#!/bin/bash
+
+# Greet the user
+echo "👋 Hello, $USER! Let's check a file."
+
+# Ask for filename
+read -p "📄 Enter the filename: " filename
+
+# Check if file exists
+if [ -f "$filename" ]; then
+    echo "✅ File '$filename' exists. Here is the content:"
+    cat "$filename"
+else
+    echo "⚠️ File '$filename' does not exist."
+    echo "🛠️ Creating the file..."
+    echo "This file was created by $USER on $(date)" > "$filename"
+    echo "📂 File '$filename' created and initialized!"
+fi
+
+We can run it by:
+
+Save as file_checker.sh
+Make it executable: chmod +x file_checker.sh
+
+Run script: ./file_checker.sh
